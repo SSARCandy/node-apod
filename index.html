@@ -1,57 +1,65 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
 
-    <!--[if lt IE 9]>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+
+  <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <title>Node-apod by SSARCandy</title>
-  </head>
+  <title>Node-apod by SSARCandy</title>
+</head>
 
-  <body>
-    <header>
-      <div class="inner">
-        <h1>Node-apod</h1>
-        <h2>&quot;Astronomy Picture of the Day&quot; scraper for node, support multi-language</h2>
-        <a href="https://github.com/SSARCandy/node-apod" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
+<body>
+  <header>
+    <div class="inner">
+      <h1>Node-apod</h1>
+      <h2>&quot;Astronomy Picture of the Day&quot; scraper for node, support multi-language</h2>
+      <a href="https://github.com/SSARCandy/node-apod" class="button"><small>View project on</small> GitHub</a>
+    </div>
+  </header>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>
-<a id="node-apod" class="anchor" href="#node-apod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>node-apod</h1>
+  <div id="content-wrapper">
+    <div class="inner clearfix">
+      <section id="main-content">
+        <h1>
+          <a id="node-apod" class="anchor" href="#node-apod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>node-apod</h1>
 
-<p>"Astronomy Picture of the Day" scraper for node, support multi-language</p>
+        <p>"Astronomy Picture of the Day" scraper for node, support multi-language</p>
 
-<h2>
-<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h2>
+        <h2>
+          <a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h2>
 
-<pre><code>npm install --save node-apod
+        <pre><code>npm install --save node-apod
 </code></pre>
 
-<h2>
-<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
+        <h2>
+          <a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h2>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> apod <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>node-apod<span class="pl-pds">'</span></span>);
+        <div class="highlight highlight-source-js">
+          <pre><span class="pl-k">var</span> apod <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>node-apod
+            <span class="pl-pds">'</span>
+            </span>);
 
-<span class="pl-c">// You can get API_KEY at https://api.nasa.gov/index.html#apply-for-an-api-key</span>
-<span class="pl-en">apod</span>(<span class="pl-c1">API_KEY</span>, <span class="pl-s"><span class="pl-pds">"</span>en_us<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
-    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(data);
-});</pre></div>
+            <span class="pl-c">// You can get API_KEY at https://api.nasa.gov/index.html#apply-for-an-api-key</span>
+            <span class="pl-en">apod</span>(<span class="pl-c1">API_KEY</span>, <span class="pl-s"><span class="pl-pds">"</span>en_us
+            <span class="pl-pds">"</span>
+            </span>, <span class="pl-k">function</span>(<span class="pl-smi">err</span>, <span class="pl-smi">data</span>)
+            {
+            <span class="pl-en">console</span>.<span class="pl-c1">log</span>(data); });
+          </pre>
+        </div>
 
-<p>The response data format is same as <code>api.nasa.gov</code>, as follow:</p>
+        <p>The response data format is same as <code>api.nasa.gov</code>, as follow:</p>
 
-<pre><code>{
+        <pre><code>{
    "copyright": "Laurie Hatch",
    "date": "2016-06-23",
    "explanation": "A Full Moon sets as the Solstice Sun rises in this June 20 dawn skyscape. Captured from a nearby peak in central California, planet Earth, the scene looks across the summit of Mount Hamilton and Lick Observatory domes on a calendar date that marks an astronomical change of seasons and hemispherical extremes of daylight hours. Earth's shadow stretches toward the Santa Cruz Mountains on the western horizon. Just above the atmospheric grey shadowband is a more colorful anti-twilight arch, a band of reddened, backscattered sunlight also known as the Belt of Venus. The interplay of solstice dates and lunar months does make this solstice and Full Moon a rare match-up. The next June solstice and Full Moon will fall on the same calendar date on June 21, 2062.",
@@ -63,25 +71,31 @@
 }
 </code></pre>
 
-<h2>
-<a id="support-language" class="anchor" href="#support-language" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support language:</h2>
+        <h2>
+          <a id="support-language" class="anchor" href="#support-language" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Support
+          language:
+        </h2>
 
-<ul>
-<li>
-<code>en_us</code>(default)</li>
-<li><code>zh_tw</code></li>
-</ul>
+        <ul>
+          <li>
+            <code>en_us</code>(default)</li>
+          <li><code>zh_tw</code></li>
+        </ul>
 
-<p>If <code>LANG</code> is specified(and is valid), response data will get specified LANG's <code>title</code> and <code>explanation</code>.<br>
-For example, set <code>LANG</code> as <code>Traditional Chinese</code>:</p>
+        <p>If <code>LANG</code> is specified(and is valid), response data will get specified LANG's <code>title</code> and <code>explanation</code>.<br>          For example, set <code>LANG</code> as <code>Traditional Chinese</code>:</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-en">apod</span>(<span class="pl-c1">API_KEY</span>, <span class="pl-s"><span class="pl-pds">"</span>zh_tw<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
-    <span class="pl-en">console</span>.<span class="pl-c1">log</span>(data);
-});</pre></div>
+        <div class="highlight highlight-source-js">
+          <pre><span class="pl-en">apod</span>(<span class="pl-c1">API_KEY</span>, <span class="pl-s"><span class="pl-pds">"</span>zh_tw
+            <span class="pl-pds">"</span>
+            </span>, <span class="pl-k">function</span>(<span class="pl-smi">err</span>, <span class="pl-smi">data</span>)
+            {
+            <span class="pl-en">console</span>.<span class="pl-c1">log</span>(data); });
+          </pre>
+        </div>
 
-<p>Will Get something like this: </p>
+        <p>Will Get something like this: </p>
 
-<pre><code>{
+        <pre><code>{
    "copyright": "Laurie Hatch",
    "date": "2016-06-23",
    "explanation": "說明: 在這幅6月20日的黎明天空影像裡，東升的夏至太陽有西沉的滿月為伴。在天文學上標誌南北半球季節更迭和最長和最短白畫的這個日子，攝於地球．加州中部一座山峰的這幅影像，眺望鄰近漢密爾頓山頂和里克天文台的圓頂。影像中，地球的影子綿延向位在西方地平線的聖克魯斯山脈伸展；在灰色的大氣暗影帶之上，可見到名為金星帶的彩反輝弧，一圈由反向散射的陽光所構成的泛紅光帶。交替出現的至日與農曆月份，恰好在這一天帶來了罕見的夏至與滿月的交會。下一次夏至與滿月重逢，則要等到2062年的6月21日。(Mount \r\nHamilton 漢密爾頓山、漢莫頓山)",
@@ -92,25 +106,28 @@ For example, set <code>LANG</code> as <code>Traditional Chinese</code>:</p>
    "url": "http://apod.nasa.gov/apod/image/1606/LH7407_LickObservatorySolsticeDawnMoonset_1024x683.jpg"
 }
 </code></pre>
-        </section>
+      </section>
 
-        <aside id="sidebar">
-          <a href="https://github.com/SSARCandy/node-apod/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/SSARCandy/node-apod/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+      <aside id="sidebar">
+        <a href="./demo.html" class="button">
+          online DEMO
+        </a>
+        <a href="https://github.com/SSARCandy/node-apod/zipball/master" class="button">
+          <small>Download</small> .zip file
+        </a>
+        <a href="https://github.com/SSARCandy/node-apod/tarball/master" class="button">
+          <small>Download</small> .tar.gz file
+        </a>
 
-          <p class="repo-owner"><a href="https://github.com/SSARCandy/node-apod"></a> is maintained by <a href="https://github.com/SSARCandy">SSARCandy</a>.</p>
+        <p class="repo-owner">
+          <a href="https://github.com/SSARCandy/node-apod"></a> is maintained by <a href="https://github.com/SSARCandy">SSARCandy</a>.</p>
 
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
+        <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+      </aside>
     </div>
+  </div>
 
-  
-  </body>
+
+</body>
+
 </html>
