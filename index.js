@@ -1,24 +1,16 @@
-var APOD_BASE_URL = "https://api.nasa.gov/planetary/apod";
-var handleError = require('./handleError');
-var i18n = require('./i18n/index');
-var request = require('request');
+var express = require('express');
+var apod = require('node-apod');
+var app = express();
 
-var apod = function (API_KEY, LANG, callback) {
-  if (!LANG) {
-    LANG = 'en_us';
-  }
+var API_KEY = "WmtWE15aVRPb5XBcI7WEimtMyevbhKqNhJun8PgE";
 
-  if (!i18n[LANG]) {
-    callback('language not support!');
-  }
-  
-  request(`${APOD_BASE_URL}?api_key=${API_KEY}`, function (error, response, body) {
-    handleError(error, response, callback);
+app.get('/:lang', function (req, res) {
+  apod(API_KEY, req.params.lang, function(err, data) {
+    //console.log()
+    res.json(data);
+  })
+});
 
-    body = JSON.parse(body);
-
-    i18n[LANG](body, callback);
-  });
-};
-
-module.exports = apod;
+app.listen(2048, function () {
+  console.log('node-apod demo app listening on port 2048!');
+});
