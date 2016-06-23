@@ -12,6 +12,7 @@ npm install --save node-apod
 ```js
 var apod = require('node-apod');
 
+// You can get API_KEY at https://api.nasa.gov/index.html#apply-for-an-api-key
 apod(API_KEY, "en_us", function(err, data) {
     console.log(data);
 });
@@ -35,8 +36,8 @@ The response data format is same as `api.nasa.gov`, as follow:
  - `en_us`(default)
  - `zh_tw`
 
-If `LANG` is specified, response data will get specified LANG's `title` and `explanation`.  
-For example:
+If `LANG` is specified(and is valid), response data will get specified LANG's `title` and `explanation`.  
+For example, set `LANG` as `Traditional Chinese`:
 
 ```js
 apod(API_KEY, "zh_tw", function(err, data) {
