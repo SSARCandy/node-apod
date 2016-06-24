@@ -1,4 +1,4 @@
 #!/bin/bash
 
 node ./test/utils.js
-#node ./test/main.js
+node ./test/main.js
