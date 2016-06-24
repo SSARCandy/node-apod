@@ -18,7 +18,11 @@ function sendRequest() {
 
     httpGetAsync(url + lang + '/' + date, function (data) {
         console.log(lang);
-        data = JSON.parse(data);
-        document.querySelector('#result').innerHTML = JSON.stringify(data, null, 4);
+        try {
+            var data2 = JSON.parse(data);
+            document.querySelector('#result').innerHTML = JSON.stringify(data2, null, 4);
+        } catch (e) {
+            document.querySelector('#result').innerHTML = data;
+        }
     })
 }
