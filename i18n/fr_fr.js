@@ -4,6 +4,7 @@ var notFoundError = require('../handleError').notFound;
 
 var request = require('request');
 var cheerio = require('cheerio');
+var decoder = require('../utils').decoder;
 
 
 /**
@@ -12,10 +13,14 @@ var cheerio = require('cheerio');
  */
 module.exports = function (baseData, callback) {
     var date = baseData.date.replace(/-/g, '').slice(2);
-    request(`${BASE_URL}?_date=${date}`, function (error, response, html) {
+    request({
+        url: `${BASE_URL}?_date=${date}`,
+        encoding: null
+    }, function (error, response, buf) {
         handleError(error, response, callback);
+        var decoded = decoder(buf);
 
-        var $ = cheerio.load(html);
+        var $ = cheerio.load(decoded);
         var title = $('body > div > div:nth-child(6) > h1').text().trim();
         var explanation = $("body > div > div:nth-child(6) > div.article_colonne_gauche > div > p").text().trim().replace(/\r?\n/g, ' ');
 

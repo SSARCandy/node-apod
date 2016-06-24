@@ -24,6 +24,7 @@
   "homepage": "https://github.com/SSARCandy/node-apod#readme",
   "dependencies": {
     "cheerio": "^0.20.0",
+    "iconv-lite": "^0.4.13",
     "request": "^2.72.0"
   }
 }
