@@ -1,5 +1,6 @@
 # node-apod
 ![](https://david-dm.org/SSARCandy/node-apod.svg)  
+[![NPM](https://nodei.co/npm/node-apod.png?downloads=true)](https://nodei.co/npm/node-apod/)  
 "Astronomy Picture of the Day" scraper for node, support multi-language  
 DEMO PAGE: [http://ssarcandy.tw/node-apod/demo.html](http://ssarcandy.tw/node-apod/demo.html) 
 
