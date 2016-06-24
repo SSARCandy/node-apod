@@ -1,5 +1,5 @@
 # node-apod
-![](https://david-dm.org/SSARCandy/node-apod.svg)[![Build Status](https://travis-ci.org/SSARCandy/node-apod.svg?branch=master)](https://travis-ci.org/SSARCandy/node-apod)  
+![](https://david-dm.org/SSARCandy/node-apod.svg) [![Build Status](https://travis-ci.org/SSARCandy/node-apod.svg?branch=master)](https://travis-ci.org/SSARCandy/node-apod)  
 [![NPM](https://nodei.co/npm/node-apod.png?downloads=true)](https://nodei.co/npm/node-apod/)  
 "Astronomy Picture of the Day" scraper for node, support multi-language  
 DEMO PAGE: [http://ssarcandy.tw/node-apod/demo.html](http://ssarcandy.tw/node-apod/demo.html) 
@@ -16,12 +16,16 @@ npm install --save node-apod
 var apod = require('node-apod');
 
 // You can get API_KEY at https://api.nasa.gov/index.html#apply-for-an-api-key
-apod(API_KEY, "en_us", function(err, data) {
+apod({
+    API_KEY: API_KEY,
+    LANG: "fr_fr",
+    DATE: '2016-06-24'
+}, function(err, data) {
     console.log(data);
 });
 ```
 
-The response data format is same as `api.nasa.gov`, as follow:
+The response data format is same as `api.nasa.gov` defined, as follow:
 ```
 {
    "copyright": "Laurie Hatch",
@@ -39,12 +43,17 @@ The response data format is same as `api.nasa.gov`, as follow:
  - `en_us`: English(default)
  - `zh_tw`: Traditional Chinese
  - `cs_cz`: Czech
+ - `fr_fr`: French
 
 If `LANG` is specified(and is valid), response data will get specified LANG's `title` and `explanation`.  
 For example, set `LANG` as `Traditional Chinese`:
 
 ```js
-apod(API_KEY, "zh_tw", function(err, data) {
+apod({
+    API_KEY: API_KEY,
+    LANG: "zh_tw",
+    DATE: '2016-06-23'
+}, function(err, data) {
     console.log(data);
 });
 ```  
@@ -63,3 +72,28 @@ Will Get something like this:
    "url": "http://apod.nasa.gov/apod/image/1606/LH7407_LickObservatorySolsticeDawnMoonset_1024x683.jpg"
 }
 ```
+
+## Error Handle
+
+#### [LANG] version not found.
+
+This main site([NASA](http://apod.nasa.gov/)) is the first to update and the most likely to be up-to-date.  
+For those other languages mirror sites, maybe not alway up-to-date.
+
+If happended, will get error as follow:
+```js
+apod({
+    API_KEY: API_KEY,
+    LANG: "fr_fr",
+    DATE: '2016-06-24'
+}, function(err, data) {
+    if (err) {
+        console.error(err);
+        // 2016-06-24 don't have(or not yet) fr_fr version.
+    }
+});
+```
+
+#### Response code not 200
+
+If you get this error, means that the APOD servers cannot be reached.
