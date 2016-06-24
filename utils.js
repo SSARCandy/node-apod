@@ -8,7 +8,7 @@ var formatDate = function (str) {
     if (!~str.indexOf('-')) return '';
     if (date.getFullYear() < 1996) return '';
 
-    return `${date.getFullYear()}-${leftpad(date.getMonth() + 1)}-${leftpad(date.getDate())}`;
+    return `${date.getUTCFullYear()}-${leftpad(date.getUTCMonth() + 1)}-${leftpad(date.getUTCDate())}`;
 }
 
 module.exports = {
