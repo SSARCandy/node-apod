@@ -36,8 +36,9 @@ The response data format is same as `api.nasa.gov`, as follow:
 ```
 
 ## Support language:
- - `en_us`(default)
- - `zh_tw`
+ - `en_us`: English(default)
+ - `zh_tw`: Traditional Chinese
+ - `cs_cz`: Czech
 
 If `LANG` is specified(and is valid), response data will get specified LANG's `title` and `explanation`.  
 For example, set `LANG` as `Traditional Chinese`:
