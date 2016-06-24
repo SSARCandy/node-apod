@@ -12,9 +12,31 @@ app.all('*', function(req, res, next) {
 });
 
 app.get('/:lang', function (req, res) {
-  apod(API_KEY, req.params.lang, function(err, data) {
+  apod({
+    API_KEY: API_KEY, 
+    LANG: req.params.lang,
+  }, function(err, data) {
     //console.log()
-    res.json(data);
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(data);
+    }
+  })
+});
+
+app.get('/:lang/:date', function (req, res) {
+  apod({
+    API_KEY: API_KEY, 
+    LANG: req.params.lang,
+    DATE: req.params.date || ''
+  }, function(err, data) {
+    //console.log()
+    if (err) {
+      res.send(err);
+    } else {
+      res.json(data);
+    }
   })
 });
 
