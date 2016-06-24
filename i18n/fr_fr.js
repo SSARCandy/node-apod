@@ -1,4 +1,4 @@
-var BASE_URL = "http://www.astro.cz/apod";
+var BASE_URL = "http://www.cidehom.com/apod.php";
 var handleError = require('../handleError').common;
 var notFoundError = require('../handleError').notFound;
 
@@ -8,19 +8,19 @@ var cheerio = require('cheerio');
 
 /**
  * date format: yymmdd
- * example:   ap160517.html
+ * example:   ?date=160517
  */
 module.exports = function (baseData, callback) {
     var date = baseData.date.replace(/-/g, '').slice(2);
-    request(`${BASE_URL}/ap${date}.html`, function (error, response, html) {
+    request(`${BASE_URL}?_date=${date}`, function (error, response, html) {
         handleError(error, response, callback);
 
         var $ = cheerio.load(html);
-        var title = $('.apod>header>h1').text().trim();
-        var explanation = $("article.apod>p").eq(1).text().trim().replace(/\r?\n/g, ' ');
+        var title = $('body > div > div:nth-child(6) > h1').text().trim();
+        var explanation = $("body > div > div:nth-child(6) > div.article_colonne_gauche > div > p").text().trim().replace(/\r?\n/g, ' ');
 
         if (!title || !explanation) {
-            callback(notFoundError(baseData.date, 'cs_cz'));
+            callback(notFoundError(baseData.date, 'fr_fr'))
         } else {
             baseData.title = title;
             baseData.explanation = explanation;

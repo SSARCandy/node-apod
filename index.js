@@ -1,5 +1,5 @@
 var APOD_BASE_URL = "https://api.nasa.gov/planetary/apod";
-var handleError = require('./handleError');
+var handleError = require('./handleError').common;
 var utils = require('./utils');
 var i18n = require('./i18n/index');
 var request = require('request');

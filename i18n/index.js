@@ -1,5 +1,6 @@
 module.exports = {
     zh_tw: require('./zh_tw'),
     en_us: require('./en_us'),
-    cs_cz: require('./cs_cz')
+    cs_cz: require('./cs_cz'),
+    fr_fr: require('./fr_fr')
 };

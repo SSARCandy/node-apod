@@ -1,5 +1,7 @@
 var BASE_URL = "http://www.phys.ncku.edu.tw/~astrolab/mirrors/apod";
-var handleError = require('../handleError');
+var handleError = require('../handleError').common;
+var notFoundError = require('../handleError').notFound;
+
 var request = require('request');
 var cheerio = require('cheerio');
 
@@ -16,9 +18,13 @@ module.exports = function (baseData, callback) {
         var $ = cheerio.load(html);
         var title = $('body').children('center').eq(1).text().trim().split(/\r?\n/)[0];
         var explanation = $('body').children('p').eq(0).text().trim();
-        baseData.title = title;
-        baseData.explanation = explanation;
 
-        callback(null, baseData);
+        if (!title || !explanation) {
+            callback(notFoundError(baseData.date, 'zh_tw'));
+        } else {
+            baseData.title = title;
+            baseData.explanation = explanation;
+            callback(null, baseData);
+        }
     });
 };
