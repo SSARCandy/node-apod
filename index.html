@@ -31,7 +31,9 @@
           <h1>
 <a id="node-apod" class="anchor" href="#node-apod" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>node-apod</h1>
 
-<p>"Astronomy Picture of the Day" scraper for node, support multi-language<br>
+<p><img src="https://david-dm.org/SSARCandy/node-apod.svg" alt=""> <a href="https://travis-ci.org/SSARCandy/node-apod"><img src="https://travis-ci.org/SSARCandy/node-apod.svg?branch=master" alt="Build Status"></a><br>
+<a href="https://nodei.co/npm/node-apod/"><img src="https://nodei.co/npm/node-apod.png?downloads=true" alt="NPM"></a><br>
+"Astronomy Picture of the Day" scraper for node, support multi-language<br>
 DEMO PAGE: <a href="http://ssarcandy.tw/node-apod/demo.html">http://ssarcandy.tw/node-apod/demo.html</a> </p>
 
 <h2>
@@ -46,11 +48,15 @@ DEMO PAGE: <a href="http://ssarcandy.tw/node-apod/demo.html">http://ssarcandy.tw
 <div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> apod <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>node-apod<span class="pl-pds">'</span></span>);
 
 <span class="pl-c">// You can get API_KEY at https://api.nasa.gov/index.html#apply-for-an-api-key</span>
-<span class="pl-en">apod</span>(<span class="pl-c1">API_KEY</span>, <span class="pl-s"><span class="pl-pds">"</span>en_us<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
+<span class="pl-en">apod</span>({
+    API_KEY<span class="pl-k">:</span> <span class="pl-c1">API_KEY</span>,
+    LANG<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>fr_fr<span class="pl-pds">"</span></span>,
+    DATE<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>2016-06-24<span class="pl-pds">'</span></span>
+}, <span class="pl-k">function</span>(<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
     <span class="pl-en">console</span>.<span class="pl-c1">log</span>(data);
 });</pre></div>
 
-<p>The response data format is same as <code>api.nasa.gov</code>, as follow:</p>
+<p>The response data format is same as <code>api.nasa.gov</code> defined, as follow:</p>
 
 <pre><code>{
    "copyright": "Laurie Hatch",
@@ -69,14 +75,23 @@ DEMO PAGE: <a href="http://ssarcandy.tw/node-apod/demo.html">http://ssarcandy.tw
 
 <ul>
 <li>
-<code>en_us</code>(default)</li>
-<li><code>zh_tw</code></li>
+<code>en_us</code>: English(default)</li>
+<li>
+<code>zh_tw</code>: Traditional Chinese</li>
+<li>
+<code>cs_cz</code>: Czech</li>
+<li>
+<code>fr_fr</code>: French</li>
 </ul>
 
 <p>If <code>LANG</code> is specified(and is valid), response data will get specified LANG's <code>title</code> and <code>explanation</code>.<br>
 For example, set <code>LANG</code> as <code>Traditional Chinese</code>:</p>
 
-<div class="highlight highlight-source-js"><pre><span class="pl-en">apod</span>(<span class="pl-c1">API_KEY</span>, <span class="pl-s"><span class="pl-pds">"</span>zh_tw<span class="pl-pds">"</span></span>, <span class="pl-k">function</span>(<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
+<div class="highlight highlight-source-js"><pre><span class="pl-en">apod</span>({
+    API_KEY<span class="pl-k">:</span> <span class="pl-c1">API_KEY</span>,
+    LANG<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>zh_tw<span class="pl-pds">"</span></span>,
+    DATE<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>2016-06-23<span class="pl-pds">'</span></span>
+}, <span class="pl-k">function</span>(<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
     <span class="pl-en">console</span>.<span class="pl-c1">log</span>(data);
 });</pre></div>
 
@@ -93,6 +108,33 @@ For example, set <code>LANG</code> as <code>Traditional Chinese</code>:</p>
    "url": "http://apod.nasa.gov/apod/image/1606/LH7407_LickObservatorySolsticeDawnMoonset_1024x683.jpg"
 }
 </code></pre>
+
+<h2>
+<a id="error-handle" class="anchor" href="#error-handle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Error Handle</h2>
+
+<h4>
+<a id="lang-version-not-found" class="anchor" href="#lang-version-not-found" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>[LANG] version not found.</h4>
+
+<p>This main site(<a href="http://apod.nasa.gov/">NASA</a>) is the first to update and the most likely to be up-to-date.<br>
+For those other languages mirror sites, maybe not alway up-to-date.</p>
+
+<p>If happended, will get error as follow:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-en">apod</span>({
+    API_KEY<span class="pl-k">:</span> <span class="pl-c1">API_KEY</span>,
+    LANG<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">"</span>fr_fr<span class="pl-pds">"</span></span>,
+    DATE<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>2016-06-24<span class="pl-pds">'</span></span>
+}, <span class="pl-k">function</span>(<span class="pl-smi">err</span>, <span class="pl-smi">data</span>) {
+    <span class="pl-k">if</span> (err) {
+        <span class="pl-en">console</span>.<span class="pl-c1">error</span>(err);
+        <span class="pl-c">// 2016-06-24 don't have(or not yet) fr_fr version.</span>
+    }
+});</pre></div>
+
+<h4>
+<a id="response-code-not-200" class="anchor" href="#response-code-not-200" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Response code not 200</h4>
+
+<p>If you get this error, means that the APOD servers cannot be reached.</p>
         </section>
 
         <aside id="sidebar">
