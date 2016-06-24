@@ -18,7 +18,7 @@ var apod = require('node-apod');
 // You can get API_KEY at https://api.nasa.gov/index.html#apply-for-an-api-key
 apod({
     API_KEY: API_KEY,
-    LANG: "fr_fr",
+    LANG: "en_us",
     DATE: '2016-06-24'
 }, function(err, data) {
     console.log(data);
