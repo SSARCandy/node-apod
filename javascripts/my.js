@@ -14,8 +14,9 @@ function httpGetAsync(theUrl, callback) {
 function sendRequest() {
     var e = document.getElementById("LANG");
     var lang = e.options[e.selectedIndex].value;
+    var date = document.getElementById("datepicker").value;
 
-    httpGetAsync(url + lang, function (data) {
+    httpGetAsync(url + lang + '/' + date, function (data) {
         console.log(lang);
         data = JSON.parse(data);
         document.querySelector('#result').innerHTML = JSON.stringify(data, null, 4);

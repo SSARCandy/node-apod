@@ -9,13 +9,22 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <script src="./javascripts/my.js"></script>
+    <script src="./javascripts/my.js"></script> 
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
     <title>Node-apod by SSARCandy</title>
+    <script>
+    $(function() {
+        $( "#datepicker" ).datepicker({
+            altFormat: "yyyy-mm-dd"
+        });
+    });
+    </script>
 </head>
 
 <body>
@@ -34,8 +43,11 @@
                 <select id="LANG">
                     <option value="en_us" selected>English</option>
                     <option value="zh_tw">正體中文</option>
+                    <option value="cs_cz">čeština</option>
+                    <option value="fr_fr">français</option>
                 </select>
-                <button onclick="sendRequest()">send request!</button>
+                <p>Date: <input type="text" id="datepicker"></p>
+                <button onclick="sendRequest()">Send request!</button>
 
                 <pre style="white-space: pre-wrap;"><code id="result">result will show here!!</code></pre>
             </section>
