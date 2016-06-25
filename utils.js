@@ -29,7 +29,6 @@ function decoder(buffer) {
 
     // re-do decode if charset != utf-8
     if (charset.toLowerCase() !== 'utf-8') {
-        console.log('fuck', charset)
         decoded = iconv.decode(new Buffer(buffer), charset);
     }
 

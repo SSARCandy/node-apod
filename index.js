@@ -1,13 +1,18 @@
+'use strict';
+
 var APOD_BASE_URL = "https://api.nasa.gov/planetary/apod";
 var handleError = require('./handleError').common;
 var utils = require('./utils');
 var i18n = require('./i18n/index');
 var request = require('request');
 
+function APOD(API_KEY) {
+  this.API_KEY = API_KEY;
+}
 
 
-var apod = function(options, callback) {
-  if (!options.API_KEY) {
+APOD.prototype.get = function(options, callback) {
+  if (!this.API_KEY) {
     callback('API_KEY not defined!');
   }
 
@@ -22,7 +27,7 @@ var apod = function(options, callback) {
   //FIXME
   options.DATE = utils.formatDate(options.DATE);
 
-  request(`${APOD_BASE_URL}?api_key=${options.API_KEY}&date=${options.DATE}`, function (error, response, body) {
+  request(`${APOD_BASE_URL}?api_key=${this.API_KEY}&date=${options.DATE}`, function (error, response, body) {
     handleError(error, response, callback);
 
     body = JSON.parse(body);
@@ -32,4 +37,4 @@ var apod = function(options, callback) {
 };
 
 
-module.exports = apod;
+module.exports = APOD;

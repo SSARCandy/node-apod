@@ -13,13 +13,12 @@ npm install --save node-apod
 ## Usage
 
 ```js
-var apod = require('node-apod');
+var APOD = require('node-apod');
+var apod = new APOD(API_KEY); // You can get API_KEY at https://api.nasa.gov/index.html#apply-for-an-api-key
 
-// You can get API_KEY at https://api.nasa.gov/index.html#apply-for-an-api-key
-apod({
-    API_KEY: API_KEY,
-    LANG: "en_us",
-    DATE: '2016-06-24'
+apod.send({
+    LANG: "en_us", // default en_us
+    DATE: '2016-06-24' // default today
 }, function(err, data) {
     console.log(data);
 });
