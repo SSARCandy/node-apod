@@ -17,7 +17,10 @@ module.exports = function (baseData, callback) {
         url: `${BASE_URL}/ap${date}.html`,
         encoding: null
     }, function (error, response, buf) {
-        handleError(error, response, callback);
+        if (handleError(error, response)) {
+            return callback(handleError(error, response));
+        }
+
         var decoded = decoder(buf);
 
         var $ = cheerio.load(decoded);
@@ -25,11 +28,11 @@ module.exports = function (baseData, callback) {
         var explanation = $('body').children('p').eq(0).text().trim();
 
         if (!title || !explanation) {
-            callback(notFoundError(baseData.date, 'zh_tw'));
+            return callback(notFoundError(baseData.date, 'zh_tw'));
         } else {
             baseData.title = title;
             baseData.explanation = explanation;
-            callback(null, baseData);
+            return callback(null, baseData);
         }
     });
 };

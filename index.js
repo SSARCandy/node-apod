@@ -10,10 +10,9 @@ function APOD(API_KEY) {
   this.API_KEY = API_KEY;
 }
 
-
 APOD.prototype.get = function(options, callback) {
   if (!this.API_KEY) {
-    callback('API_KEY not defined!');
+    return callback('API_KEY not defined!');
   }
 
   if (!options.LANG) {
@@ -21,16 +20,21 @@ APOD.prototype.get = function(options, callback) {
   }
 
   if (!i18n[options.LANG]) {
-    callback('Language not support!');
+    return callback(`Language ${options.LANG} not support!`);
   }
 
   //FIXME
   options.DATE = utils.formatDate(options.DATE);
 
-  request(`${APOD_BASE_URL}?api_key=${this.API_KEY}&date=${options.DATE}`, function (error, response, body) {
-    handleError(error, response, callback);
+  var opt = {
+    url: `${APOD_BASE_URL}?api_key=${this.API_KEY}&date=${options.DATE}`,
+    json: true
+  };
 
-    body = JSON.parse(body);
+  request(opt, function (error, response, body) {
+    if (handleError(error, response, body)) {
+      return callback(handleError(error, response, body));
+    }
 
     i18n[options.LANG](body, callback);
   });
