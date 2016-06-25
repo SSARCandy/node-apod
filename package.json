@@ -4,7 +4,7 @@
   "description": "Astronomy Picture of the Day(APOD) scraper for node, support multi-language",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test/index.js"
+    "test": "mocha --timeout 10000 test/index.js"
   },
   "repository": {
     "type": "git",
