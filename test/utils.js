@@ -1,38 +1,33 @@
-var utils = require('../utils/utils');
-var dateFixtures = require('./fixtures/dates');
-var results = [];
+'use strict';
 
-function formatDateTest(fixture, answer) {
-    var ans = utils.formatDate(fixture);
-    console.log(ans == answer, ans);
-    results.push(ans == answer);    
-}
+const should = require('chai').should(); // eslint-disable-line
+const utils = require('../utils/utils');
 
-// invalid date 
-formatDateTest(dateFixtures[0], '');
+describe('utils', function() {
+    describe('format date', function () {
+        const formatDate = utils.formatDate;
 
-// yyyymmdd -> invalid date
-formatDateTest(dateFixtures[1], '');
+        it('should passed normal format yyyy-mm-dd', function() {
+            formatDate('2016-03-26').should.eql('2016-03-26');
+        });
 
-// yyyy-m-d -> yyyy-mm-dd
-formatDateTest(dateFixtures[2], '2016-05-01');
+        it('should returns empty string', function () {
+            formatDate('gtfttr').should.eql('');
+            formatDate('20110511').should.eql('');
+            formatDate('---').should.eql('');
+            formatDate('///').should.eql('');
+        });
 
-// yyyy-mm-dd
-formatDateTest(dateFixtures[3], '1994-03-26');
+        it('should format yyyy/mm/dd to yyyy-mm-dd', function() {
+            formatDate('1994/03/26').should.eql('1994-03-26');
+        });
 
-// --- -> invalid date
-formatDateTest(dateFixtures[4], '');
+        it('should format yyyy-m-d to yyyy-mm-dd', function() {
+            formatDate('1994-3-26').should.eql('1994-03-26');
+        });
 
-// /// -> invalid date
-formatDateTest(dateFixtures[5], '');
-
-// yyyy/mm/dd -> invalid date
-formatDateTest(dateFixtures[6], '1994-03-26');
-
-
-
-if (~results.indexOf(false)) {
-    console.error('TEST FAILED: utils');
-} else {
-    console.log('TEST PASSED: utils');
-}
+        it('should format yyyy/m/d to yyyy-mm-dd', function() {
+            formatDate('1994/3/2').should.eql('1994-03-02');
+        });
+    });
+});

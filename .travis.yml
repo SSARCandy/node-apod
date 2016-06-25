@@ -12,6 +12,7 @@ cache:
 
 install:
     - npm install
+    - npm i -g mocha
 
 script:
-    - ./test/index.sh
+    - npm test
