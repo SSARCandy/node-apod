@@ -7,13 +7,29 @@ function leftpad(str) {
     return ("0" + str).slice(-2);
 }
 
-var formatDate = function (str) {
-    var date = new Date(str);
-    if (!str) return '';
-    if (!~str.indexOf('-')) return '';
-    if (date.getFullYear() < 1996) return '';
+function checkDateArray(date) {
+    date = date.map(parseFloat);
+    if (!date[0] || !date[1] || !date[2]) return false;
+    if (date[0].length < 4) return false;
+    if (date[1] > 12 || date[1] < 1) return false;
+    if (date[2] > 31 || date[2] < 1) return false;
 
-    return `${date.getUTCFullYear()}-${leftpad(date.getUTCMonth() + 1)}-${leftpad(date.getUTCDate())}`;
+    return true;
+}
+
+var formatDate = function (str) {
+    if (!str) return '';
+    if (str.split('-').length === 3) {
+        var date = str.split('-');
+        return checkDateArray(date) ? `${date[0]}-${leftpad(date[1])}-${leftpad(date[2])}` : '';
+    }
+
+    if (str.split('/').length === 3) {
+        var date = str.split('/');
+        return checkDateArray(date) ? `${date[0]}-${leftpad(date[1])}-${leftpad(date[2])}` : '';
+    }
+
+     return '';
 }
 
 function getCharset(str) {

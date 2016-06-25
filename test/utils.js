@@ -1,4 +1,4 @@
-var utils = require('../utils');
+var utils = require('../utils/utils');
 var dateFixtures = require('./fixtures/dates');
 var results = [];
 
@@ -17,12 +17,17 @@ formatDateTest(dateFixtures[1], '');
 // yyyy-m-d -> yyyy-mm-dd
 formatDateTest(dateFixtures[2], '2016-05-01');
 
-// year < 1996 -> ''
-formatDateTest(dateFixtures[0], '');
+// yyyy-mm-dd
+formatDateTest(dateFixtures[3], '1994-03-26');
 
+// --- -> invalid date
+formatDateTest(dateFixtures[4], '');
 
+// /// -> invalid date
+formatDateTest(dateFixtures[5], '');
 
-
+// yyyy/mm/dd -> invalid date
+formatDateTest(dateFixtures[6], '1994-03-26');
 
 
 

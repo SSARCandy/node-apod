@@ -1,12 +1,12 @@
 'use strict';
 
 var BASE_URL = "http://www.phys.ncku.edu.tw/~astrolab/mirrors/apod";
-var handleError = require('../handleError').common;
-var notFoundError = require('../handleError').notFound;
+var handleError = require('../utils/handleError').common;
+var notFoundError = require('../utils/handleError').notFound;
 
 var request = require('request');
 var cheerio = require('cheerio');
-var decoder = require('../utils').decoder;
+var decoder = require('../utils/utils').decoder;
 
 
 /**
