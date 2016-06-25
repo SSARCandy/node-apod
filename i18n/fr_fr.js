@@ -1,3 +1,5 @@
+'use strict';
+
 var BASE_URL = "http://www.cidehom.com/apod.php";
 var handleError = require('../handleError').common;
 var notFoundError = require('../handleError').notFound;

@@ -1,3 +1,5 @@
+'use strict';
+
 var notFound = function (date, lang) {
   return `${date} don't have(or not yet) ${lang} version.`
 };

@@ -49,7 +49,6 @@ For example, set `LANG` as `Traditional Chinese`:
 
 ```js
 apod({
-    API_KEY: API_KEY,
     LANG: "zh_tw",
     DATE: '2016-06-23'
 }, function(err, data) {
@@ -82,7 +81,6 @@ For those other languages mirror sites, maybe not alway up-to-date.
 If happended, will get error as follow:
 ```js
 apod({
-    API_KEY: API_KEY,
     LANG: "fr_fr",
     DATE: '2016-06-24'
 }, function(err, data) {

@@ -1,3 +1,5 @@
+'use strict';
+
 var BASE_URL = "http://www.astro.cz/apod";
 var handleError = require('../handleError').common;
 var notFoundError = require('../handleError').notFound;
