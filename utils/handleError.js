@@ -1,10 +1,10 @@
 'use strict';
 
-var notFound = function (date, lang) {
-  return `${date} don't have(or not yet) ${lang} version.`
-};
+function notFound(date, lang) {
+  return `${date} don't have(or not yet) ${lang} version.`;
+}
 
-var common = function (error, response, body) {
+function common(error, response, body) {
   if (error) {
     //console.error(error);
     return 'unknown error';
@@ -25,8 +25,7 @@ var common = function (error, response, body) {
   }
 
   return '';
-};
-
+}
 
 module.exports = {
   common: common,

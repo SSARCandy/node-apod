@@ -1,6 +1,6 @@
 'use strict';
 
-var APOD_BASE_URL = "https://api.nasa.gov/planetary/apod";
+var APOD_BASE_URL = 'https://api.nasa.gov/planetary/apod';
 var handleError = require('./utils//handleError').common;
 var utils = require('./utils/utils');
 var i18n = require('./i18n/index');
@@ -31,7 +31,7 @@ APOD.prototype.get = function(options, callback) {
     json: true
   };
 
-  request(opt, function (error, response, body) {
+  request(opt, function(error, response, body) {
     if (handleError(error, response, body)) {
       return callback(handleError(error, response, body));
     }
@@ -39,6 +39,5 @@ APOD.prototype.get = function(options, callback) {
     i18n[options.LANG](body, callback);
   });
 };
-
 
 module.exports = APOD;
