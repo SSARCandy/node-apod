@@ -11,7 +11,7 @@ describe('utils', function() {
             formatDate('2016-03-26').should.eql('2016-03-26');
         });
 
-        it('should returns empty string', function () {
+        it('should returns empty string with invalid date', function () {
             formatDate('gtfttr').should.eql('');
             formatDate('20110511').should.eql('');
             formatDate('---').should.eql('');
