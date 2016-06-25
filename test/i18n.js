@@ -11,6 +11,7 @@ function validateData(data) {
     data.should.have.property('media_type');
     data.should.have.property('url');
     data.should.have.property('service_version');
+    data.should.have.property('lang');
 
     data.title.should.not.eql('');
     data.explanation.should.not.eql('');

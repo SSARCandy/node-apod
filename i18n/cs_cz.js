@@ -36,6 +36,7 @@ module.exports = function (baseData, callback) {
 
         baseData.title = title;
         baseData.explanation = explanation;
+        baseData.lang = 'cs_cz';
         callback(null, baseData);
     });
 };

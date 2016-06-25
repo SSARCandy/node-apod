@@ -34,6 +34,7 @@ module.exports = function (baseData, callback) {
         } else {
             baseData.title = title;
             baseData.explanation = explanation;
+            baseData.lang = 'zh_tw';
             return callback(null, baseData);
         }
     });

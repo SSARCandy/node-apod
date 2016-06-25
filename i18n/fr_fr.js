@@ -34,6 +34,7 @@ module.exports = function (baseData, callback) {
         } else {
             baseData.title = title;
             baseData.explanation = explanation;
+            baseData.lang = 'fr_fr';
             return callback(null, baseData);
         }
     });
