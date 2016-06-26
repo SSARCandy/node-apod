@@ -9,9 +9,9 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/1.8.7/flatpickr.dark.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/1.8.7/flatpickr.material_blue.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/1.8.7/flatpickr.min.js"></script>
-    <script src="./javascripts/my.js"></script> 
+    <script src="./javascripts/my.js"></script>
 
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -33,12 +33,14 @@
         <div class="inner clearfix">
             <section id="main-content" style="width:100%">
 
-                <select id="LANG">
-                    <option value="en_us" selected>English</option>
-                    <option value="zh_tw">正體中文</option>
-                    <option value="cs_cz">čeština</option>
-                    <option value="fr_fr">français</option>
-                </select>
+                <p>LANG:
+                    <select id="LANG">
+                        <option value="en_us" selected>English</option>
+                        <option value="zh_tw">正體中文</option>
+                        <option value="cs_cz">čeština</option>
+                        <option value="fr_fr">français</option>
+                    </select>
+                </p>
                 <p>Date: <input type="text" id="datepicker" placeholder="yyyy-mm-dd"></p>
                 <button onclick="sendRequest()">Send request!</button>
 
