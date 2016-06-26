@@ -39,12 +39,13 @@ The response data format as follow:
 }
 ```
 
-## Support language:
+## Supported language:
  - `en_us`: English(default)
  - `zh_tw`: Traditional Chinese
  - `cs_cz`: Czech
  - `fr_fr`: French
  - `ar_sa`: Arabic
+ - `de_de`: German
 
 If `LANG` is specified(and is valid), response data will get specified LANG's `title` and `explanation`.  
 For example, set `LANG` as `Traditional Chinese`:
