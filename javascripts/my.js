@@ -1,5 +1,7 @@
 console.log('This would be the main JS file.');
 var url = "http://139.162.49.112:2048/";
+var loading = false;
+
 
 function httpGetAsync(theUrl, callback) {
     var xmlHttp = new XMLHttpRequest();
@@ -12,6 +14,7 @@ function httpGetAsync(theUrl, callback) {
 }
 
 function sendRequest() {
+    var sp = document.getElementById('spinner').style.display='';
     var e = document.getElementById("LANG");
     var lang = e.options[e.selectedIndex].value;
     var date = document.getElementById("datepicker").value;
@@ -24,7 +27,8 @@ function sendRequest() {
         } catch (e) {
             document.querySelector('#result').innerHTML = data;
         }
-    })
+        document.getElementById('spinner').style.display='none';
+    });
 }
 
 document.addEventListener('DOMContentLoaded', function() {

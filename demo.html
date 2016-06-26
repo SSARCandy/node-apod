@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="stylesheets/my.css">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/1.8.7/flatpickr.material_blue.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/1.8.7/flatpickr.min.js"></script>
     <script src="./javascripts/my.js"></script>
@@ -45,7 +46,11 @@
                     <input type="text" id="datepicker" placeholder="yyyy-mm-dd">
                 </p>
                 <button onclick="sendRequest()">Send request!</button>
-
+                <div class="spinner" id="spinner" style="display:none;">
+                    <div class="bounce1"></div>
+                    <div class="bounce2"></div>
+                    <div class="bounce3"></div>
+                </div>
                 <pre style="white-space: pre-wrap;"><code id="result">result will show here!!</code></pre>
             </section>
 
