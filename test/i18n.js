@@ -97,4 +97,15 @@ describe('i18n', function () {
         });
     });
 
+    it('should success with gl_es', function (done) {
+        apod.get({
+            DATE: '2016-05-11',
+            LANG: 'gl_es'
+        }, function (err, data) {
+            expect(err).to.be.null;
+            validateData(data);
+            done();
+        });
+    });
+
 });

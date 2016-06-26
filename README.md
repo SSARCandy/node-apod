@@ -47,6 +47,7 @@ The response data format as follow:
  - `ar_sa`: Arabic
  - `de_de`: German
  - `ja_jp`: Japanese
+ - `gl_es`: Galician
 
 If `LANG` is specified(and is valid), response data will get specified LANG's `title` and `explanation`.  
 For example, set `LANG` as `Traditional Chinese`:
