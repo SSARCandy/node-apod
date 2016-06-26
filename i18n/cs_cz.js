@@ -1,6 +1,8 @@
 'use strict';
 
+const LANG = 'cs_cz';
 const BASE_URL = 'http://www.astro.cz/apod';
+
 const handleError = require('../utils/handleError').common;
 const notFoundError = require('../utils/handleError').notFound;
 const request = require('request');
@@ -25,12 +27,12 @@ function craw(baseData, callback) {
     let explanation = $('article.apod > p').eq(1).text().trim().replace(/\r?\n/g, ' ');
 
     if (!title || !explanation) {
-      return callback(notFoundError(baseData.date, 'cs_cz'));
+      return callback(notFoundError(baseData.date, LANG));
     }
 
     baseData.title = title;
     baseData.explanation = explanation;
-    baseData.lang = 'cs_cz';
+    baseData.lang = LANG;
     callback(null, baseData);
   });
 }

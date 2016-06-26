@@ -30,9 +30,7 @@ APOD.prototype.get = function(options, callback) {
     json: true
   };
 
-  console.time('i');
   request(opt, function(error, response, body) {
-  console.timeEnd('i');
     if (handleError(error, response, body)) {
       return callback(handleError(error, response, body));
     }

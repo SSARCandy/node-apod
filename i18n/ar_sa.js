@@ -1,6 +1,8 @@
 'use strict';
 
+const LANG = 'ar_sa';
 const BASE_URL = 'http://www.apodar.com/apod';
+
 const handleError = require('../utils/handleError').common;
 const notFoundError = require('../utils/handleError').notFound;
 const request = require('request');
@@ -25,12 +27,12 @@ function craw(baseData, callback) {
     let explanation = $('body > div.region4 > div:nth-child(1) > div > div').text().trim();
 
     if (!title || !explanation) {
-      return callback(notFoundError(baseData.date, 'cs_cz'));
+      return callback(notFoundError(baseData.date, LANG));
     }
 
     baseData.title = title;
     baseData.explanation = explanation;
-    baseData.lang = 'ar_sa';
+    baseData.lang = LANG;
     callback(null, baseData);
   });
 }

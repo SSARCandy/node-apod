@@ -1,6 +1,8 @@
 'use strict';
 
+const LANG = 'zh_tw';
 const BASE_URL = 'http://www.phys.ncku.edu.tw/~astrolab/mirrors/apod';
+
 const handleError = require('../utils/handleError').common;
 const notFoundError = require('../utils/handleError').notFound;
 const request = require('request');
@@ -24,12 +26,12 @@ function craw(baseData, callback) {
       let explanation = $('body').children('p').eq(0).text().trim();
 
       if (!title || !explanation) {
-        return callback(notFoundError(baseData.date, 'zh_tw'));
+        return callback(notFoundError(baseData.date, LANG));
       }
 
       baseData.title = title;
       baseData.explanation = explanation;
-      baseData.lang = 'zh_tw';
+      baseData.lang = LANG;
       return callback(null, baseData);
     });
 }
