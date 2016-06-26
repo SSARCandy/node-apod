@@ -1,14 +1,14 @@
 'use strict';
 
-var BASE_URL = 'http://www.astro.cz/apod';
-var handleError = require('../utils/handleError').common;
-var notFoundError = require('../utils/handleError').notFound;
-var request = require('request');
-var cheerio = require('cheerio');
-var decoder = require('../utils/utils').decoder;
+const BASE_URL = 'http://www.astro.cz/apod';
+const handleError = require('../utils/handleError').common;
+const notFoundError = require('../utils/handleError').notFound;
+const request = require('request');
+const cheerio = require('cheerio');
+const decoder = require('../utils/utils').decoder;
 
 function craw(baseData, callback) {
-  var date = baseData.date.replace(/-/g, '').slice(2);
+  let date = baseData.date.replace(/-/g, '').slice(2);
 
   request({
     url: `${BASE_URL}/ap${date}.html`,
@@ -18,11 +18,11 @@ function craw(baseData, callback) {
       return callback(handleError(error, response));
     }
 
-    var decoded = decoder(buf);
+    let decoded = decoder(buf);
 
-    var $ = cheerio.load(decoded);
-    var title = $('.apod > header > h1').text().trim();
-    var explanation = $('article.apod > p').eq(1).text().trim().replace(/\r?\n/g, ' ');
+    let $ = cheerio.load(decoded);
+    let title = $('.apod > header > h1').text().trim();
+    let explanation = $('article.apod > p').eq(1).text().trim().replace(/\r?\n/g, ' ');
 
     if (!title || !explanation) {
       return callback(notFoundError(baseData.date, 'cs_cz'));

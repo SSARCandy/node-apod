@@ -1,6 +1,6 @@
 'use strict';
 
-var iconv = require('iconv-lite');
+const iconv = require('iconv-lite');
 
 function leftpad(str) {
   return ('0' + str).slice(-2);
@@ -19,12 +19,12 @@ function checkDateArray(date) {
 function formatDate(str) {
   if (!str) return '';
   if (str.split('-').length === 3) {
-    var date = str.split('-');
+    let date = str.split('-');
     return checkDateArray(date) ? `${date[0]}-${leftpad(date[1])}-${leftpad(date[2])}` : '';
   }
 
   if (str.split('/').length === 3) {
-    var date = str.split('/');
+    let date = str.split('/');
     return checkDateArray(date) ? `${date[0]}-${leftpad(date[1])}-${leftpad(date[2])}` : '';
   }
 
@@ -33,7 +33,7 @@ function formatDate(str) {
 
 function getCharset(str) {
   if (str == null) return null;
-  var charset = str.match(/charset=["]*([^>"\s]+)/i);
+  let charset = str.match(/charset=["]*([^>"\s]+)/i);
   if (charset instanceof Array && charset.length >= 2) return charset[1];
 
   return null;
@@ -41,8 +41,8 @@ function getCharset(str) {
 
 function decoder(buffer) {
   // try utf-8
-  var decoded = iconv.decode(new Buffer(buffer), 'utf-8');
-  var charset = getCharset(decoded);
+  let decoded = iconv.decode(new Buffer(buffer), 'utf-8');
+  let charset = getCharset(decoded);
 
   // re-do decode if charset != utf-8
   if (charset.toLowerCase() !== 'utf-8') {
