@@ -16,7 +16,7 @@ npm install --save node-apod
 var APOD = require('node-apod');
 var apod = new APOD(API_KEY); // You can get API_KEY at https://api.nasa.gov/index.html#apply-for-an-api-key
 
-apod.send({
+apod.get({
     LANG: "en_us", // default en_us
     DATE: '2016-06-24' // default today
 }, function(err, data) {
@@ -53,7 +53,7 @@ If `LANG` is specified(and is valid), response data will get specified LANG's `t
 For example, set `LANG` as `Traditional Chinese`:
 
 ```js
-apod({
+apod.get({
     LANG: "zh_tw",
     DATE: '2016-06-23'
 }, function(err, data) {
@@ -86,7 +86,7 @@ For those other languages mirror sites, maybe not alway up-to-date.
 
 If happended, will get error as follow:
 ```js
-apod({
+apod.get({
     LANG: "fr_fr",
     DATE: '2016-06-24'
 }, function(err, data) {
