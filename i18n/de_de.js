@@ -1,7 +1,7 @@
 'use strict';
 
-const LANG = 'fr_fr';
-const BASE_URL = 'http://www.cidehom.com/apod.php';
+const LANG = 'de_de';
+const BASE_URL = 'http://www.starobserver.org';
 
 const handleError = require('../utils/handleError').common;
 const notFoundError = require('../utils/handleError').notFound;
@@ -12,7 +12,7 @@ const decoder = require('../utils/utils').decoder;
 function craw(baseData, callback) {
   let date = baseData.date.replace(/-/g, '').slice(2);
   request({
-      url: `${BASE_URL}?_date=${date}`,
+      url: `${BASE_URL}/ap${date}.html`,
       encoding: null
     }, function(error, response, buf) {
       if (handleError(error, response)) {
@@ -22,8 +22,8 @@ function craw(baseData, callback) {
       let decoded = decoder(buf);
 
       let $ = cheerio.load(decoded);
-      let title = $('body > div > div:nth-child(6) > h1').text().trim();
-      let explanation = $('body > div > div:nth-child(6) > div.article_colonne_gauche > div > p').text().trim().replace(/\r?\n/g, ' ');
+      let title = $('body > center > h3').text().trim();
+      let explanation = $('body > center > p:nth-child(6)').text().trim();
 
       if (!title || !explanation) {
         return callback(notFoundError(baseData.date, LANG));

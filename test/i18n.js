@@ -75,4 +75,15 @@ describe('i18n', function () {
         });
     });
 
+    it('should success with de_de', function (done) {
+        apod.get({
+            DATE: '2016-05-11',
+            LANG: 'de_de'
+        }, function (err, data) {
+            expect(err).to.be.null;
+            validateData(data);
+            done();
+        });
+    });
+
 });
