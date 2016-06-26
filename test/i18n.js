@@ -86,4 +86,15 @@ describe('i18n', function () {
         });
     });
 
+    it('should success with he_li', function (done) {
+        apod.get({
+            DATE: '2016-05-11',
+            LANG: 'he_li'
+        }, function (err, data) {
+            expect(err).to.be.null;
+            validateData(data);
+            done();
+        });
+    });
+
 });

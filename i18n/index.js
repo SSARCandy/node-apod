@@ -6,5 +6,6 @@ module.exports = {
   cs_cz: require('./cs_cz'),
   fr_fr: require('./fr_fr'),
   ar_sa: require('./ar_sa'),
-  de_de: require('./de_de')
+  de_de: require('./de_de'),
+  he_li: require('./he_il')
 };
