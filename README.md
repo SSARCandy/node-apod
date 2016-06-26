@@ -44,6 +44,7 @@ The response data format as follow:
  - `zh_tw`: Traditional Chinese
  - `cs_cz`: Czech
  - `fr_fr`: French
+ - `ar_sa`: Arabic
 
 If `LANG` is specified(and is valid), response data will get specified LANG's `title` and `explanation`.  
 For example, set `LANG` as `Traditional Chinese`:
