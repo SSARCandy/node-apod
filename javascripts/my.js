@@ -27,4 +27,6 @@ function sendRequest() {
     })
 }
 
-flatpickr('#datepicker');
+document.addEventListener('DOMContentLoaded', function() {
+    flatpickr('#datepicker');    
+})
