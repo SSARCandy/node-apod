@@ -7,5 +7,6 @@ module.exports = {
   fr_fr: require('./fr_fr'),
   ar_sa: require('./ar_sa'),
   de_de: require('./de_de'),
-  ja_jp: require('./ja_jp')
+  ja_jp: require('./ja_jp'),
+  gl_es: require('./gl_es')
 };
