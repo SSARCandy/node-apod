@@ -1,4 +1,4 @@
 {
     "preset": "dcard",
-    "excludeFiles": ["node_modules/**", "i18n/index.js"]
+    "excludeFiles": ["node_modules/**", "i18n/index.js", "test/**"]
 }

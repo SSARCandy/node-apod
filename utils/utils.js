@@ -18,13 +18,22 @@ function checkDateArray(date) {
 
 function formatDate(str) {
   if (!str) return '';
+
+  // yyyy-%m-%d
   if (str.split('-').length === 3) {
     let date = str.split('-');
     return checkDateArray(date) ? `${date[0]}-${leftpad(date[1])}-${leftpad(date[2])}` : '';
   }
 
+  // yyyy/%m/%d
   if (str.split('/').length === 3) {
     let date = str.split('/');
+    return checkDateArray(date) ? `${date[0]}-${leftpad(date[1])}-${leftpad(date[2])}` : '';
+  }
+
+  // yyyymmdd
+  if (str.length === 8 && parseInt(str, 10)) {
+    let date = [str.slice(0, 4), str.slice(4, 6), str.slice(6)];
     return checkDateArray(date) ? `${date[0]}-${leftpad(date[1])}-${leftpad(date[2])}` : '';
   }
 

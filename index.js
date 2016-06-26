@@ -23,7 +23,6 @@ APOD.prototype.get = function(options, callback) {
     return callback(`Language ${options.LANG} not support!`);
   }
 
-  //FIXME
   options.DATE = utils.formatDate(options.DATE);
 
   let opt = {
