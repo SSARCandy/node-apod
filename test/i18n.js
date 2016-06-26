@@ -75,7 +75,7 @@ describe('i18n', function () {
         });
     });
 
-    it.only('should success with de_de', function (done) {
+    it('should success with de_de', function (done) {
         apod.get({
             DATE: '2016-05-11',
             LANG: 'de_de'
