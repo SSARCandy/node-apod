@@ -86,4 +86,15 @@ describe('i18n', function () {
         });
     });
 
+    it('should success with ja_jp', function (done) {
+        apod.get({
+            DATE: '2016-05-11',
+            LANG: 'ja_jp'
+        }, function (err, data) {
+            expect(err).to.be.null;
+            validateData(data);
+            done();
+        });
+    });
+
 });
