@@ -1,6 +1,6 @@
 {
   "name": "node-apod",
-  "version": "1.5.2",
+  "version": "1.6.3",
   "description": "Astronomy Picture of the Day(APOD) scraper for node, support multi-language",
   "main": "index.js",
   "engines": {
