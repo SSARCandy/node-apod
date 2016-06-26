@@ -44,6 +44,7 @@ The response data format as follow:
  - `zh_tw`: Traditional Chinese
  - `cs_cz`: Czech
  - `fr_fr`: French
+ - `ar_sa`: Arabic
 
 If `LANG` is specified(and is valid), response data will get specified LANG's `title` and `explanation`.  
 For example, set `LANG` as `Traditional Chinese`:
@@ -77,7 +78,7 @@ Will Get something like this:
 
 #### [LANG] version not found.
 
-This main site([NASA](http://apod.nasa.gov/)) is the first to update and the most likely to be up-to-date.  
+The main site([NASA](http://apod.nasa.gov/)) is the first to update and the most likely to be up-to-date.  
 For those other languages mirror sites, maybe not alway up-to-date.
 
 If happended, will get error as follow:

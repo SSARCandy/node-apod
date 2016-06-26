@@ -64,4 +64,15 @@ describe('i18n', function () {
         });
     });
 
+    it('should success with ar_sa', function (done) {
+        apod.get({
+            DATE: '2016-06-21',
+            LANG: 'ar_sa'
+        }, function (err, data) {
+            expect(err).to.be.null;
+            validateData(data);
+            done();
+        });
+    });
+
 });
