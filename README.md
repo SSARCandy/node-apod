@@ -48,6 +48,7 @@ The response data format as follow:
  - `de_de`: German
  - `ja_jp`: Japanese
  - `gl_es`: Galician
+ - `tr_tr`: Turkish
 
 If `LANG` is specified(and is valid), response data will get specified LANG's `title` and `explanation`.  
 For example, set `LANG` as `Traditional Chinese`:
