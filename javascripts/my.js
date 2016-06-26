@@ -26,3 +26,5 @@ function sendRequest() {
         }
     })
 }
+
+flatpickr('#datepicker');
