@@ -77,7 +77,7 @@ Will Get something like this:
 
 #### [LANG] version not found.
 
-This main site([NASA](http://apod.nasa.gov/)) is the first to update and the most likely to be up-to-date.  
+The main site([NASA](http://apod.nasa.gov/)) is the first to update and the most likely to be up-to-date.  
 For those other languages mirror sites, maybe not alway up-to-date.
 
 If happended, will get error as follow:
