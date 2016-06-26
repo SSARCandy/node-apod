@@ -8,29 +8,29 @@ const cheerio = require('cheerio');
 const decoder = require('../utils/utils').decoder;
 
 function craw(baseData, callback) {
-    let date = baseData.date.replace(/-/g, '').slice(2);
-    request({
-        url: `${BASE_URL}?_date=${date}`,
-        encoding: null
-    }, function (error, response, buf) {
-        if (handleError(error, response)) {
-            return callback(handleError(error, response));
-        }
+  let date = baseData.date.replace(/-/g, '').slice(2);
+  request({
+      url: `${BASE_URL}?_date=${date}`,
+      encoding: null
+    }, function(error, response, buf) {
+      if (handleError(error, response)) {
+        return callback(handleError(error, response));
+      }
 
-        let decoded = decoder(buf);
+      let decoded = decoder(buf);
 
-        let $ = cheerio.load(decoded);
-        let title = $('body > div > div:nth-child(6) > h1').text().trim();
-        let explanation = $('body > div > div:nth-child(6) > div.article_colonne_gauche > div > p').text().trim().replace(/\r?\n/g, ' ');
+      let $ = cheerio.load(decoded);
+      let title = $('body > div > div:nth-child(6) > h1').text().trim();
+      let explanation = $('body > div > div:nth-child(6) > div.article_colonne_gauche > div > p').text().trim().replace(/\r?\n/g, ' ');
 
-        if (!title || !explanation) {
-            return callback(notFoundError(baseData.date, 'fr_fr'));
-        }
+      if (!title || !explanation) {
+        return callback(notFoundError(baseData.date, 'fr_fr'));
+      }
 
-        baseData.title = title;
-        baseData.explanation = explanation;
-        baseData.lang = 'fr_fr';
-        return callback(null, baseData);
+      baseData.title = title;
+      baseData.explanation = explanation;
+      baseData.lang = 'fr_fr';
+      return callback(null, baseData);
     });
 }
 
