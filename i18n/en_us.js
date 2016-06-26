@@ -1,4 +1,6 @@
-module.exports = function (baseData, callback) {
-    baseData.lang = 'en_us';
-    callback(null, baseData);
+'use strict';
+
+module.exports = function(baseData, callback) {
+  baseData.lang = 'en_us';
+  callback(null, baseData);
 };

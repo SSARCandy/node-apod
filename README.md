@@ -1,5 +1,5 @@
 # node-apod
-![](https://david-dm.org/SSARCandy/node-apod.svg) [![Build Status](https://travis-ci.org/SSARCandy/node-apod.svg?branch=master)](https://travis-ci.org/SSARCandy/node-apod)  
+![](https://david-dm.org/SSARCandy/node-apod.svg) [![Build Status](https://travis-ci.org/SSARCandy/node-apod.svg?branch=master)](https://travis-ci.org/SSARCandy/node-apod) ![node version](https://img.shields.io/badge/node-%3E%3D4.4.4-brightgreen.svg)  
 [![NPM](https://nodei.co/npm/node-apod.png?downloads=true)](https://nodei.co/npm/node-apod/)  
 "Astronomy Picture of the Day" scraper for node, support multi-language  
 DEMO PAGE: [http://ssarcandy.tw/node-apod/demo.html](http://ssarcandy.tw/node-apod/demo.html) 

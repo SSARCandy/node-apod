@@ -1,41 +1,37 @@
 'use strict';
 
-var BASE_URL = "http://www.cidehom.com/apod.php";
-var handleError = require('../utils/handleError').common;
-var notFoundError = require('../utils/handleError').notFound;
+const BASE_URL = 'http://www.cidehom.com/apod.php';
+const handleError = require('../utils/handleError').common;
+const notFoundError = require('../utils/handleError').notFound;
+const request = require('request');
+const cheerio = require('cheerio');
+const decoder = require('../utils/utils').decoder;
 
-var request = require('request');
-var cheerio = require('cheerio');
-var decoder = require('../utils/utils').decoder;
+function craw(baseData, callback) {
+  let date = baseData.date.replace(/-/g, '').slice(2);
+  request({
+      url: `${BASE_URL}?_date=${date}`,
+      encoding: null
+    }, function(error, response, buf) {
+      if (handleError(error, response)) {
+        return callback(handleError(error, response));
+      }
 
+      let decoded = decoder(buf);
 
-/**
- * date format: yymmdd
- * example:   ?date=160517
- */
-module.exports = function (baseData, callback) {
-    var date = baseData.date.replace(/-/g, '').slice(2);
-    request({
-        url: `${BASE_URL}?_date=${date}`,
-        encoding: null
-    }, function (error, response, buf) {
-        if (handleError(error, response)) {
-            return callback(handleError(error, response));
-        }
+      let $ = cheerio.load(decoded);
+      let title = $('body > div > div:nth-child(6) > h1').text().trim();
+      let explanation = $('body > div > div:nth-child(6) > div.article_colonne_gauche > div > p').text().trim().replace(/\r?\n/g, ' ');
 
-        var decoded = decoder(buf);
+      if (!title || !explanation) {
+        return callback(notFoundError(baseData.date, 'fr_fr'));
+      }
 
-        var $ = cheerio.load(decoded);
-        var title = $('body > div > div:nth-child(6) > h1').text().trim();
-        var explanation = $("body > div > div:nth-child(6) > div.article_colonne_gauche > div > p").text().trim().replace(/\r?\n/g, ' ');
-
-        if (!title || !explanation) {
-            return callback(notFoundError(baseData.date, 'fr_fr'))
-        } else {
-            baseData.title = title;
-            baseData.explanation = explanation;
-            baseData.lang = 'fr_fr';
-            return callback(null, baseData);
-        }
+      baseData.title = title;
+      baseData.explanation = explanation;
+      baseData.lang = 'fr_fr';
+      return callback(null, baseData);
     });
-};
+}
+
+module.exports = craw;
