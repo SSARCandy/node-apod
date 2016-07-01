@@ -30,7 +30,7 @@ function craw(baseData, callback) {
       let $ = cheerio.load(decoded);
       let title = $('article > header > h1 > a').text().trim();
       let explanation = $('article > div').text();
-      let expIdx = explanation.indexOf('Explicaci');
+      let expIdx = explanation.indexOf('Exp');
       explanation = explanation.slice(expIdx);
 
       if (!title || !explanation) {
