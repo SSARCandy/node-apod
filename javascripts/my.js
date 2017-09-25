@@ -1,5 +1,5 @@
 console.log('This would be the main JS file.');
-var url = "http://139.162.49.112:2048/";
+var url = "https://exwd.csie.org/apod/";
 var loading = false;
 
 
